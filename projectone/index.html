@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Responsive Project One</title>
+        <link type="image/png" sizes="32x32" rel="icon" href="./img/icons8-square-32.png">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cinzel+Decorative&family=Cinzel:wght@400;500;600;700;800;900&family=Lora:wght@400;500;700&family=Noto+Sans:wght@100;200;300;400;500;700&family=Oswald:wght@200;300;400;500;600;700&family=Roboto:wght@300;400;500&family=Ubuntu:wght@300;400&family=Urbanist:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+            :root {
+                --font-family-one: "Archivo Black", sans-serif;
+                --font-family-two: "Urbanists", sans-serif;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: var(--font-family-two);
+                scroll-behavior: smooth;
+            }
+            
+            header 
+            {
+                padding: 2.5em;
+                width: 100%;
+            }
+            header.sticky{
+                background-color: black;
+                color: white;
+                position: fixed;
+                z-index: 9999;
+                transition: all 250ms ease;
+            }
+            header.sticky nav .menu span
+            {
+                border: 1px solid white;
+                transition: all 650ms ease;
+            }
+         
+            nav 
+            {
+                display: flex;
+                max-width: 80em;
+                margin: auto;
+                align-items: center;
+                justify-content: space-between;
+                /* height: 100%; */
+                position: relative;
+            }
+            nav .logo
+            {
+                font-family: var(--font-family-one);
+                font-size: 2.1em;
+            }
+            nav .links 
+            {
+                padding: 0.5em;
+            }
+
+            nav .links ul 
+            {
+                display: flex;
+                list-style: none;
+                gap: 1em;
+                position: relative;
+                padding: 0.3em 0;
+            }
+            nav .links ul li a 
+            {
+                font-size: 1.2em;
+                font-weight: 500;
+                padding: 0.05em 0;
+                cursor: pointer;
+            }
+            nav .links ul li a:hover 
+            {
+                transition: 1020ms ease-in;
+                border-bottom: 1.5px solid black;
+            }
+            .active 
+            {
+                border-bottom: 1.5px solid black;
+            }
+
+            
+            .menu 
+            {
+                padding: 0.5em;
+                /* display: flex; */
+                flex-direction: column;
+                gap: 0.5em;
+                cursor: pointer;
+                display: none;
+            }
+            .menu span 
+            {
+                border: 1px solid black;
+                width: 1.8em;
+                transition: all 50ms ease;
+                pointer-events: none;
+            }
+            .exit 
+            {
+               cursor: pointer;
+            }
+            section 
+            {
+                max-width: 100em;
+                margin-inline: auto;
+                padding: 5em 0;
+                padding-inline: 3em;
+            }
+            section .container 
+            {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(min(20em, 100%), 30em));
+                justify-content: center;
+                gap: 4em;
+            }
+            section .container .box 
+            {
+                width: 100%;
+                overflow: hidden;
+            }
+            section .container .box img 
+            {
+                width: 100%;
+                aspect-ratio: 1 / 1;
+                object-fit: cover;
+                transform: scale(1);
+                transition: transform 650ms ease-in-out;
+            }
+            section .container .box:hover > img 
+            {
+                transform: scale(1.3);
+                transition: all 650ms ease-in-out;
+            }
+
+            footer 
+            {
+                width: 100%;
+            }
+
+            footer #content 
+            {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                padding: 2em;
+                gap: 2em;
+                background-color: black;
+                color: white;
+            }
+            .overflow 
+            {
+                overflow: hidden;
+                color: black;
+            }
+            @media screen and (max-width: 65em) 
+            {
+                /* section 
+                {
+                    padding-inline: 
+                } */
+                /* section .container .box 
+                {
+                    gap: -5em;
+                } */
+            }
+            @media screen and (max-width: 49.5em) 
+            {
+                header nav .menu
+                {
+                    /* position: relative; */
+                    z-index: 10;
+                }
+                .links 
+                {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: none; 
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    z-index: 2;
+                    /* opacity: 0; */
+                    transition: opacity 5s ease;
+                    color: black;
+                    background-color: white;
+                }
+                .links ul 
+                {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .links ul li 
+                {
+                    font-size: 2em;
+                }
+                
+                .menu 
+                {
+                    display: flex;
+                }
+                section .container 
+                {
+                    grid-template-columns: repeat(auto-fit, minmax(min(30em, 100%), 1fr));
+                }
+            } 
+           header.sticky nav .menu span.dark 
+            {
+                /* color: black; */
+                border: 1px solid black;
+                transition: all 650ms ease;
+            }
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="logo" id="left">Sofia Pazari</div>
+
+                <div class="links" id="right">
+                    <ul>
+                        <li><a class="link active">Work</a></li>
+                        <li><a class="link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="menu">
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </header>
+        <section>
+          <div class="container">
+            <div class="box">
+                <img src="./img/p1.jpg"/>
+            </div>
+            <div class="box">
+                <img src="./img/p2.jpg"/>
+            </div>
+            <div class="box">
+                <img src="./img/p3.jpg" />
+            </div>
+            <div class="box">
+                <img src="./img/p4.jpg" />
+            </div>
+          </div>
+        </section>
+        <footer>
+            <div class="center" id="content">
+                <p>@kambrad</p>
+                <p>&copy; Kam's Responsive Mocksite </p>
+            </div>
+        </footer>
+    </body>
+    <script type="text/javascript">
+        const { log, error } = console;
+        const { innerWidth } = window;
+
+        let bool = true;
+
+        // enable class 'active'
+        function active (element)
+        {
+            for (let i = 0; i < element.length; i++) 
+            {
+                switch (i) {
+                    case 0:
+                        element[i].classList.add("active");
+                        break;
+                    default: 
+                        break;
+                }
+            }
+        }
+        typeof innerWidth === "number" && innerWidth <= 450 ? active(document.getElementsByClassName('link')) : document.getElementsByClassName('link')[0].classList.add("active");
+        
+        function value (element, style, val) 
+        {
+            return element['style'][style] = val;
+        }
+
+        document.getElementsByClassName("menu")[0].addEventListener("click", (e) => {
+            let lineOne, lineTwo = null;
+
+            if (e.target.className === "menu") 
+            {
+                e.target.style.gap = '0';
+
+                lineOne = document.querySelector(".menu span:nth-child(1)");
+                value(lineOne, 'transform', 'rotate(45deg)');
+
+                lineTwo = document.querySelector(".menu span:nth-child(2)");
+                value(lineTwo, 'transform', 'rotate(-45deg) translateX(1px)');
+
+                document.getElementsByClassName("links")[0].style.display = "flex";
+                document.body.classList.add("overflow");
+                
+            } else 
+            {
+                e.target.style.gap = '0.5em';
+
+                lineOne = document.querySelector(".menu span:nth-child(1)");
+                value(lineOne, 'transform', 'rotate(0deg)');
+
+                lineTwo = document.querySelector(".menu span:nth-child(2)");
+                value(lineTwo, 'transform', 'rotate(0deg)');
+
+                document.getElementsByClassName("links")[0].style.display = "none";
+                document.body.classList.remove("overflow")
+                
+            }
+            // document.getElementsByClassName("links")[0].style.display = "flex";
+
+            e.target.classList.toggle("exit");
+        })
+
+        
+
+        // window.addEventListener("resize", (e) => typeof e.target.innerWidth === "number" && e.target.innerWidth >= 793 ? document.getElementsByClassName("links")[0].style.display = "flex" : document.getElementsByClassName("links")[0].style.display = "none");
+
+        window.addEventListener("resize", (e) => {
+            const menu = document.getElementsByClassName("menu")[0];
+            if (typeof e.target.innerWidth === "number" && e.target.innerWidth >= 793) {
+                if (menu.className === "menu exit") {
+                    menu.classList.remove("exit");
+                } else 
+                {
+                    document.getElementsByClassName("links")[0].style.display = "flex";
+                    menu.classList.add("exit");
+                }
+            } else 
+            {
+                let lineOne, lineTwo = null;
+        
+                menu.classList.remove("exit");
+
+                menu.style.gap = "0.5em";
+                
+                lineOne = document.querySelector(".menu span:nth-child(1)");
+                value(lineOne, 'transform', 'rotate(0deg)');
+
+                lineTwo = document.querySelector(".menu span:nth-child(2)");
+                value(lineTwo, 'transform', 'rotate(0deg)');
+
+                document.getElementsByClassName("links")[0].style.display = "none";
+            }
+        })
+    </script>
+    <script>
+        const { addEventListener } = window;
+
+        addEventListener("scroll", (e) => {
+            document.getElementsByTagName("header")[0].classList.toggle("sticky", window.scrollY > 100);
+
+            if (window.scrollY >= 100) {
+                document.querySelector("header.sticky nav .menu").addEventListener("click", toggleMenu)
+            }
+        })
+
+        function toggleMenu(e) 
+        {
+            const stickyDiv = e.target.querySelectorAll("span");
+
+            stickyDiv.forEach((span) => {
+                span.classList.toggle("dark")
+            })
+        }
+    </script>
+</html>
